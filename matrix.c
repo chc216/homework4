@@ -9,7 +9,7 @@ int ** make_matrix(int, int);
 void print_matrix(int *[], int , int);
 int ** addition_matrix(int *[], int *[]);
 int ** subtraction_matrix(int *[], int *[]);
-int ** transpose_matrix(int **, int, int);
+int ** transpose_matrix(int *[], int, int);
 int ** multiply_matrix(int *[], int *[]);
 void free_matrix(int *[], int);
 
@@ -170,25 +170,7 @@ int ** multiply_matrix(int *A[], int *B[])  //2차원 배열 A,B를 인수로 �
     }
 }
 
-int **transpose_matrix(int **matrix, int rows, int cols) {
-    int **result;
-    int i, j;
-    result = malloc(cols * sizeof(int *));
-    for (i = 0; i < cols; i++) {
-        result[i] = malloc(rows * sizeof(int));
-        for (j = 0; j < rows; j++) {
-            result[i][j] = matrix[j][i];
-        }
-    }
-    for (i = 0; i < rows; i++) {
-        free(matrix[i]);
-    }
-    free(matrix);
-    return result;
-}
 
-
-/*
 int ** transpose_matrix(int * tmp[], int row, int column)   //임의의 2차원 배열의 주소와 행,열의 크기를 인수로 넘겨받아 전치행렬의 주소를 반환한다.
 {
     int ** matrix = make_matrix(column, row);   //결과값을 저장할 2차원 배열 matrix를 선언 및 동적할당 받는다.
@@ -199,7 +181,7 @@ int ** transpose_matrix(int * tmp[], int row, int column)   //임의의 2차원 
     M_row = column;
     M_column = row; //tmp의 전치행렬 MATRIX의 크기를 저장한다. (print_matrix를 위해)
     return matrix;
-}*/
+}
 
 void print_matrix(int * matrix[], int row, int column)  //임의의 2차원 배열과, 행,열의 크기를 인수로 넘겨받아 행렬을 출력한다.
 {
